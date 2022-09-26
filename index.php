@@ -1,10 +1,13 @@
 <?php 
 declare(strict_types=1);
 
-
 spl_autoload_register(function ($class) {
     include __DIR__ . '/class/'.$class.'.php';
 });
+
+include('config.php');
+
+$db = DB::getInstance();
 
 
 $test_item = array(
@@ -23,30 +26,46 @@ $test_item = array(
 
 'product_images' => array('image1', 'image2', 'image3'),
 
-'product_description' => array(
-    1 => array(
+'product_descriptions' => array(
+    array(
     'language_id' => 1,
     'name' => 'name_rus',
     'description' => 'description_rus'
     ),
-    2 => array(
+    array(
         'language_id' => 3,
         'name' => 'name_ua',
         'description' => 'description_ua'
     )
 ),
+
+'product_attributes' => array(
+    array(
+    'language_id' => 1,
+    'name' => 'name_rus',
+    'text' => 'description_rus'
+    ),
+    array(
+        'language_id' => 3,
+        'name' => 'name_ua',
+        'text' => 'description_ua'
+    )
+),
+
+'product_filters' => array(1, 2),
+
 );
 
 
-print_r($test_item);
+$item = new Item($test_item);
 
-exit;
+print_r($item);
 
-include('config.php');
 
-$test = (new ItemFabrica())->create();
 
-print_r($test);
+
+
+
 
 
 ?>
