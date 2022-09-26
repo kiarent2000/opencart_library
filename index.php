@@ -23,17 +23,18 @@ $test_item = array(
 
 'product_images' => array('image1', 'image2', 'image3'),
 
-'product_description'[0] => array(
+'product_description' => array(
+    1 => array(
     'language_id' => 1,
     'name' => 'name_rus',
     'description' => 'description_rus'
     ),
-'product_description'[2] => array(
-     'language_id' => 1,
-    'name' => 'name_rus',
-    'description' => 'description_rus'
-    ),
-
+    2 => array(
+        'language_id' => 3,
+        'name' => 'name_ua',
+        'description' => 'description_ua'
+    )
+),
 );
 
 
