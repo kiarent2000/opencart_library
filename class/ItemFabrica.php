@@ -1,4 +1,4 @@
-<?
+<?php
 class ItemFabrica
 {
     public function create()
