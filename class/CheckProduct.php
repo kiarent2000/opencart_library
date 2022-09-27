@@ -8,7 +8,7 @@ class CheckProduct
 
     public function check($dbh)
     {
-        $sql = "SELECT `product_id` FROM `oc_product` WHERE `sku` = '$this->sku'";
+        $sql = 'SELECT `product_id` FROM `'. DB_PREFIX.'_product` WHERE `sku` = '.$this->sku;
         $sth = $dbh->query($sql);
         $result = $sth->fetch();
         if($result)
