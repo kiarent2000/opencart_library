@@ -6,10 +6,10 @@ class CheckProduct
         $this->sku=$sku;
     }
 
-    public function check()
+    public function check($dbh)
     {
         $sql = "SELECT `product_id` FROM `oc_product` WHERE `sku` = '$this->sku'";
-        $sth = (DB::getInstance()->connect())->query($sql);
+        $sth = $dbh->query($sql);
         $result = $sth->fetch();
         if($result)
         {

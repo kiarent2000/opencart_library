@@ -30,13 +30,13 @@ $test_item = array(
     
     'product_attributes' => array(
         array(
-            'attribute_id '=>1,
+            'attribute_id'=>1,
             'language_id' => 1,
             'name' => 'name_rus',
             'text' => 'description_rus'
         ),
         array(
-            'attribute_id '=>1,
+            'attribute_id'=>1,
             'language_id' => 3,
             'name' => 'name_ua',
             'text' => 'description_ua'
