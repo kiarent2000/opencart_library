@@ -1,7 +1,6 @@
 <?php 
 class AddProduct
 {
-       
     public function __construct($dbh)
     {
       $this->dbh=$dbh; 
