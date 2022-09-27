@@ -16,12 +16,16 @@ class AddProduct
         {
             $descriptions = $this->addDescription($item, $product_id);
             if(!$descriptions){$errors[]=101;} // Ошибка добавления описания
+            
             $category = $this->addCategory($item, $product_id);
             if(!$category){$errors[]=102;} // Ошибка добавления категории
+            
             $store = $this->addProductToStore($product_id);
             if(!$store){$errors[]=103;} // Ошибка добавления магазина
+            
             $layout = $this->addProductToLayout($product_id);
             if(!$layout){$errors[]=104;} // Ошибка добавления дизайна
+            
             if($item->product_images)
             {
                 $images = $this->addProductImages($item, $product_id);
@@ -50,7 +54,7 @@ class AddProduct
 
     private function addProduct(Item $item) : int
     {
-        $sql = 'INSERT INTO    `'. DB_PREFIX.'_product` SET `model` = :model, `sku` = :sku, `upc` = :upc, `ean` = :ean, `jan` = :jan, `location` = :location, `quantity`='.$item->quantity.', `stock_status_id`='.$item->stock_status_id.', `image` = :image, `manufacturer_id`='.$item->manufacturer_id.', `price`='.$item->price.', `status`=1, `date_added`=NOW(), `date_modified`=NOW()';
+        $sql = 'INSERT INTO `'. DB_PREFIX.'_product` SET `model` = :model, `sku` = :sku, `upc` = :upc, `ean` = :ean, `jan` = :jan, `location` = :location, `quantity`='.$item->quantity.', `stock_status_id`='.$item->stock_status_id.', `image` = :image, `manufacturer_id`='.$item->manufacturer_id.', `price`='.$item->price.', `status`=1, `date_added`=NOW(), `date_modified`=NOW()';
         
         $sth = $this->dbh->prepare($sql);
         $sth->bindValue(':model', $item->model, PDO::PARAM_STR);
@@ -75,7 +79,6 @@ class AddProduct
         foreach($item->product_descriptions as $product_description)
         {
             $sql = 'INSERT INTO `'. DB_PREFIX.'_product_description` SET `product_id` = '.$product_id.', `language_id` = '.$product_description['language_id'].', `name` = :name, `description` = :description'; 
-
         
             $sth = $this->dbh->prepare($sql);
             $sth->bindValue(':name', $product_description['name'], PDO::PARAM_STR);
